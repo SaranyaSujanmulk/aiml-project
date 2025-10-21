@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <title>Contact - Energy Saving Tips</title>
+    <style>
+        /* General Body */
+        body { 
+            font-family: 'Arial', sans-serif; 
+            margin: 0; 
+
+            /* Match Home/History animated orange gradient */
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2, #fff8e1, #ffd180);
+            background-size: 400% 400%;
+            animation: gradientShift 40s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #333;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            margin: 0 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .navbar a:hover {
+            background: #FF4500;
+            transform: scale(1.1);
+        }
+
+        /* Centered Back link */
+        .back-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-home {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #fff;
+            color: #FF4500;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .back-home:hover { background: #ffe0b2; }
+
+        /* Container */
+        .container {
+            width: 600px;
+            max-width: 95%;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        h2 {
+            color: #FF8C00;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input, textarea {
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+            font-size: 16px;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        input:focus, textarea:focus {
+            border: 2px solid #FF4500;
+            box-shadow: 0 0 8px rgba(255,69,0,0.3);
+            outline: none;
+        }
+        button {
+            padding: 15px;
+            background: linear-gradient(45deg, #FF4500, #FF8C00);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255,69,0,0.4);
+        }
+
+        /* Success message */
+        .success-message {
+            background: #d1ffd6;
+            border-left: 6px solid #32cd32;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .container { padding: 25px; }
+            .navbar a { padding: 10px 18px; margin: 0 6px; }
+            .back-wrapper { margin-top: 20px; }
+            .back-home { padding: 8px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Centered Back link -->
+    <div class="back-wrapper">
+        <a href="/home" class="back-home">⬅ Back to Home</a>
+    </div>
+
+    <!-- Contact Form Container -->
+    <div class="container">
+        <h2>Contact Us</h2>
+
+        {% if success %}
+        <div class="success-message">
+            Thank you {{ name }}! Your message has been sent successfully.
+        </div>
+        {% endif %}
+
+        <form method="post" action="/contact">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+</body>
+</html>

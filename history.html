@@ -1,0 +1,150 @@
+<!doctype html> 
+<html>
+<head>
+    <title>Energy Consumption History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+            /* Match Home/Predict gradient background */
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2, #fff8e1, #ffd180);
+            background-size: 400% 400%;
+            animation: gradientShift 40s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #333;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+        .navbar a {
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            margin: 0 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+        .navbar a:hover { background: #FF4500; }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #FF8C00;
+            margin-bottom: 25px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table th {
+            background: #FF4500;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table tr:hover {
+            background: #ffe0b2;
+        }
+
+        /* Link button */
+        .link {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .link a {
+            padding: 12px 30px;
+            background: #FF4500;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .link a:hover {
+            background: #e03d00;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- History Container -->
+    <div class="container">
+        <h2>Energy Consumption History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Global Reactive Power</th>
+                    <th>Global Intensity</th>
+                    <th>Submeter 1</th>
+                    <th>Submeter 2</th>
+                    <th>Submeter 3</th>
+                    <th>Predicted Global Active Power</th>
+                    <th>Highest Consuming Submeter</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if history %}
+                    {% for record in history %}
+                    <tr>
+                        <td>{{ record.datetime }}</td>
+                        <td>{{ record.grp }}</td>
+                        <td>{{ record.gi }}</td>
+                        <td>{{ record.sm1 }}</td>
+                        <td>{{ record.sm2 }}</td>
+                        <td>{{ record.sm3 }}</td>
+                        <td>{{ "%.8f"|format(record.prediction) }}</td>
+                        <td>{{ record.top_submeter }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="8">No history available.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <div class="link">
+            <a href="/home">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>

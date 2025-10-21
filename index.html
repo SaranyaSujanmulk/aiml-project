@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power Consumption Analysis</title>
+    <style>
+        body {
+            background-color: #FFD700;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 100px auto;
+            width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background: red;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Power Consumption Analysis</h2>
+        <form action="/predict" method="post">
+            <input type="text" name="global_reactive_power" placeholder="Enter the Global reactive power value(0-1)" required>
+            <input type="text" name="global_intensity" placeholder="Enter the Global Intensity value" required>
+            <input type="text" name="sub1" placeholder="Enter the Submeter Reading 1" required>
+            <input type="text" name="sub2" placeholder="Enter the Submeter Reading 2" required>
+            <input type="text" name="sub3" placeholder="Enter the Submeter Reading 3" required>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>

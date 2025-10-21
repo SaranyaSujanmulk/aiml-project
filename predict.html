@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+    <title>Power Consumption Prediction</title>
+    <style>
+        /* ====================== GLOBAL STYLES ====================== */
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2, #ffcc80, #ffb74d);
+            background-size: 400% 400%;
+            animation: gradientShift 35s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ====================== NAVBAR ====================== */
+        .navbar {
+            width: 100%;
+            background: linear-gradient(90deg, #ff9800, #f57c00);
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0px 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .navbar a {
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            margin: 0 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .navbar a:hover {
+            background: #e65100;
+            transform: translateY(-2px);
+        }
+
+        /* ====================== MAIN CONTAINER ====================== */
+        .container { 
+            width: 420px; 
+            background: rgba(255, 255, 255, 0.97);
+            padding: 40px 30px;
+            border-radius: 16px; 
+            box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+            margin-top: 60px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 30px rgba(0,0,0,0.2);
+        }
+
+        h2 { 
+            text-align: center; 
+            color: #e65100;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* ====================== INPUT STYLING ====================== */
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-radius: 8px; 
+            border: 1px solid #ccc; 
+            outline: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #ff9800;
+            box-shadow: 0 0 6px rgba(255,152,0,0.4);
+        }
+
+        /* ====================== BUTTON ====================== */
+        button { 
+            background: linear-gradient(90deg, #ff9800, #f57c00);
+            color: white; 
+            padding: 12px; 
+            width: 100%; 
+            border: none; 
+            border-radius: 8px; 
+            font-size: 16px; 
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 5px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background: #e65100;
+            transform: translateY(-1px);
+        }
+
+        /* ====================== RESULT & INSIGHTS ====================== */
+        .result { 
+            text-align: center; 
+            margin-top: 20px; 
+            font-size: 16px; 
+        }
+
+        .result h3 {
+            color: #e65100;
+            margin-bottom: 8px;
+        }
+
+        .result p {
+            color: #333;
+        }
+
+        .insight { 
+            margin-top: 15px; 
+            font-size: 14px; 
+            color: #555; 
+            background: #fff8e1;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .insight b {
+            color: #ff6f00;
+        }
+
+        /* ====================== LINK ====================== */
+        .link { 
+            text-align: center; 
+            margin-top: 20px; 
+        }
+
+        .link a { 
+            text-decoration: none; 
+            color: #f57c00; 
+            font-weight: bold; 
+            transition: color 0.3s;
+        }
+
+        .link a:hover { 
+            color: #e65100;
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 450px) {
+            .container { width: 90%; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Prediction Form -->
+    <div class="container">
+        <h2>Power Consumption Prediction</h2>
+        <form method="post">
+            <input type="number" step="any" name="grp" placeholder="Global reactive power (0-1)" required>
+            <input type="number" step="any" name="gi" placeholder="Global Intensity" required>
+            <input type="number" step="any" name="sm1" placeholder="Submeter Reading 1" required>
+            <input type="number" step="any" name="sm2" placeholder="Submeter Reading 2" required>
+            <input type="number" step="any" name="sm3" placeholder="Submeter Reading 3" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result">
+                {% if prediction|string %}
+                    <h3 style="color:red;">{{ prediction }}</h3>
+                {% else %}
+                    <h3>Predicted Global Active Power:</h3>
+                    <p><b>{{ "%.8f"|format(prediction) }}</b> kW</p>
+                    <div class="insight">
+                        <p><b>Highest consuming submeter:</b> {{ top_submeter }}</p>
+                        <p><b>Recommendation:</b> {{ recommendation }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="link">
+            <a href="/home">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

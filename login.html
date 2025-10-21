@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+    <title>Login - Energy App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            /* Soft animated gradient background */
+            background: linear-gradient(135deg, #ffffff, #aee1f9, #d4f1f4, #b3e5fc);
+            background-size: 400% 400%;
+            animation: gradientShift 40s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Login container styling */
+        .login-container {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #00aaff;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .login-container input:focus {
+            border-color: #00aaff;
+            box-shadow: 0 0 5px rgba(0,170,255,0.5);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #00aaff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-container button:hover {
+            background: #0077aa;
+        }
+
+        .login-container .link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .login-container .link a {
+            color: #00aaff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-container .link a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 400px) {
+            .login-container { width: 90%; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login container -->
+    <div class="login-container">
+        <h2>Login</h2>
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="post" action="{{ url_for('login') }}">
+            <input type="text" name="username" placeholder="Enter Username" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="link">
+            <p>Don’t have an account? <a href="{{ url_for('register') }}">Register</a></p>
+        </div>
+    </div>
+</body>
+</html>

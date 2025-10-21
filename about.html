@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Power Consumption Analysis</title>
+  <style>
+    /* Body with animated orange gradient */
+    body { 
+      font-family: Arial, sans-serif; 
+      margin:0; padding:0; 
+      color:#333; 
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2, #fff8e1, #ffd180);
+      background-size: 400% 400%;
+      animation: gradientShift 40s ease-in-out infinite;
+      min-height: 100vh;
+      overflow-x:hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header { 
+      background: rgba(248, 191, 87, 0.85); 
+      color:#fff; 
+      padding:30px 20px; 
+      text-align:center; 
+      border-radius: 0 0 12px 12px;
+    }
+
+    .back-home {
+      display:inline-block;
+      margin-top:12px;
+      padding:10px 20px;
+      background:#fff;
+      color:#FF4500;
+      border-radius:6px;
+      text-decoration:none;
+      font-weight:bold;
+      transition: 0.3s;
+    }
+    .back-home:hover { background:#ffe0b2; }
+
+    .container { 
+      max-width:900px; 
+      margin:20px auto; 
+      padding:20px; 
+    }
+    h1, h2 { color:#FF4500; }
+    p { line-height:1.6; }
+    ul, ol { margin:10px 0 20px 25px; }
+
+    .card { 
+      background:#fff; 
+      padding:25px; 
+      border-radius:12px; 
+      box-shadow:0 6px 20px rgba(0,0,0,0.12); 
+      margin-bottom:25px; 
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    }
+
+    footer { 
+      text-align:center; 
+      padding:20px; 
+      font-size:14px; 
+      color:#fff; 
+      background:#000000; 
+      border-radius: 12px 12px 0 0;
+      margin-top:30px;
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 768px) {
+      .container { padding:15px; }
+      header { padding:20px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>About — Power Consumption Analysis</h1>
+    <p>A data-driven approach to monitor, analyze, and reduce household electricity usage ⚡</p>
+    <a href="/home" class="back-home">⬅ Back to Home</a>
+  </header>
+
+  <div class="container">
+    <section class="card">
+      <h2>What is Power Consumption Analysis?</h2>
+      <p>
+        Power Consumption Analysis (PCA) is a system that studies household electricity usage patterns, 
+        identifies appliances consuming high energy, and provides insights to optimize power usage. 
+        By leveraging sub-metering data and predictive modeling, it helps detect peak consumption periods, 
+        forecast future usage, and guide users toward energy efficiency.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>How it Works</h2>
+      <ol>
+        <li><strong>Data Collection:</strong> Household power consumption dataset with voltage, current, and sub-meter readings.</li>
+        <li><strong>Data Cleaning:</strong> Handle missing values, scale features, and prepare input data.</li>
+        <li><strong>Analysis:</strong> Explore patterns such as daily/weekly peaks, appliance-level usage, and anomalies.</li>
+        <li><strong>Prediction:</strong> Use PCA + ML models (Random Forest, ARIMA, etc.) to forecast active power demand.</li>
+        <li><strong>Recommendations:</strong> Suggest energy-saving measures based on high-usage appliances.</li>
+      </ol>
+    </section>
+
+    <section class="card">
+      <h2>How to Reduce High Consumption</h2>
+      <ul>
+        <li>Turn off appliances when not in use, especially heavy consumers like AC, geysers, and washing machines.</li>
+        <li>Switch to energy-efficient appliances (LED bulbs, inverter refrigerators, star-rated devices).</li>
+        <li>Use appliances during non-peak hours to reduce stress on the grid.</li>
+        <li>Monitor kitchen devices (Sub-meter 1), laundry/heating devices (Sub-meter 2), and HVAC (Sub-meter 3) to cut excess load.</li>
+        <li>Regularly track your consumption trends with the PCA dashboard.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Dataset</h2>
+      <p>
+        This project uses the <code>household_power_consumption</code> dataset, which contains:
+      </p>
+      <ul>
+        <li><b>Date & Time</b> — timestamp of measurement</li>
+        <li><b>Global_active_power</b> — household active power consumption (kW)</li>
+        <li><b>Global_reactive_power</b> — reactive power (kW)</li>
+        <li><b>Voltage</b> — average voltage (V)</li>
+        <li><b>Global_intensity</b> — current intensity (A)</li>
+        <li><b>Sub_metering_1,2,3</b> — appliance-level consumption</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Power Consumption Analysis — Helping households save energy effectively.</p>
+  </footer>
+</body>
+</html>

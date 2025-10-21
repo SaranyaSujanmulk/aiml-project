@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+    <title>Home - Energy Saving Tips</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            overflow-x: hidden;
+            color: #333;
+
+            /* Soft animated orange gradient background */
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2, #fff8e1, #ffd180);
+            background-size: 400% 400%;
+            animation: gradientShift 40s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(90deg, #ff9800, #ff6f00);
+            padding: 14px 0;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .navbar a {
+            color: #fff;
+            padding: 10px 25px;
+            text-decoration: none;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar a:hover { 
+            background: #e65100; 
+            transform: translateY(-2px);
+        }
+
+        /* Main section */
+        .main-content {
+            max-width: 800px;
+            margin: 60px auto;
+            background: rgba(255, 255, 255, 0.96);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .main-content:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 12px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e65100;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        p.subtitle {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: #ff6f00;
+            margin-bottom: 15px;
+        }
+
+        .tips {
+            background: #fff3e0;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: left;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .tips li {
+            margin-bottom: 10px;
+        }
+
+        .btn-link { 
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 30px; 
+            background: #ff9800; 
+            color: #fff; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            transition: background 0.3s, transform 0.2s;
+            font-weight: bold;
+        }
+
+        .btn-link:hover { 
+            background: #e65100; 
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            color: #fff;
+            padding: 18px;
+            text-align: center;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ff9800;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content { margin: 40px 15px; padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="/home">Home</a>
+        <a href="/predict">Prediction</a>
+        <a href="/history">History</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Welcome to the Energy Saving Dashboard ⚡</h1>
+        <p class="subtitle">Smart insights to reduce power consumption and boost efficiency.</p>
+        
+        <h2>Energy Saving Tips for Households</h2>
+        <div class="tips">
+            <ul>
+                <li>Run appliances during off-peak hours to save electricity cost.</li>
+                <li>Adjust thermostat settings to save energy without losing comfort.</li>
+                <li>Invest in energy-efficient appliances for long-term savings.</li>
+                <li>Turn off lights and appliances when not in use.</li>
+                <li>Regularly maintain HVAC and kitchen appliances to improve efficiency.</li>
+            </ul>
+        </div>
+
+        <a href="/predict" class="btn-link">Go to PCA Prediction</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Power Consumption Analysis Project. All Rights Reserved.</p>
+        <p>
+            <a href="/about">About</a> | 
+            <a href="/contact">Contact</a> | 
+            <a href="https://github.com/yourname/power-consumption-analysis" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+</body>
+</html>
